@@ -3,11 +3,13 @@ package com.bounce;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.wearable.view.WatchViewStub;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
     private TextView mTextView;
+    private ImageButton bounce;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,4 +23,6 @@ public class MainActivity extends Activity {
             }
         });
     }
+
+
 }
