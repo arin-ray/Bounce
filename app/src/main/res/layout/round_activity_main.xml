@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.wearable.view.BoxInsetLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:com.bounce.app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -9,8 +9,7 @@
 
     <Button
         android:id="@+id/trigger_button"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:layout_gravity="center"
         android:padding="10dp"
         android:background="@drawable/bar_btn"
         android:gravity="bottom"
@@ -24,21 +23,21 @@
         android:id="@+id/delayed_confirm"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-
         android:src="@drawable/ic_full_cancel"
-
         com.bounce.app:circle_color="@color/blue"
         com.bounce.app:circle_border_color="@color/green"
         com.bounce.app:circle_border_width="20dp"
-        com.bounce.app:circle_radius="10dp" />
+        com.bounce.app:circle_radius="10dp"
+        android:layout_gravity="center"
+        />
     <TextView android:id="@+id/text" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Time to Bounce"
-        android:padding="5dp"
-        android:layout_above="@+id/trigger_button"
-        android:layout_centerHorizontal="true" />
+        android:padding="1dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_alignTop="@+id/trigger_button"
+        android:layout_alignEnd="@+id/trigger_button"
+        android:layout_marginTop="20dp" />
 
     <TextView
         android:id="@+id/textView"
@@ -46,7 +45,7 @@
         android:layout_height="wrap_content"
         android:text="To a bar?"
         android:padding="10dp"
-        android:layout_below="@+id/trigger_button"
-        android:layout_centerHorizontal="true" />
+        android:layout_gravity="center"
+        android:layout_marginTop="80dp"></TextView>
 
-</RelativeLayout>
+</android.support.wearable.view.BoxInsetLayout>

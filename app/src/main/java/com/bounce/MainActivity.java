@@ -9,7 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.wearable.activity.ConfirmationActivity;
 import android.support.wearable.view.DelayedConfirmationView;
-import android.support.wearable.view.WatchViewStub;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -29,22 +29,14 @@ public class MainActivity extends Activity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        final WatchViewStub stub = (WatchViewStub) findViewById(R.id.watch_view_stub);
+        setContentView(R.layout.round_activity_main);
 
-        stub.setOnLayoutInflatedListener(new WatchViewStub.OnLayoutInflatedListener() {
-            @Override
-            public void onLayoutInflated(WatchViewStub stub) {
-                mTextView = (TextView) stub.findViewById(R.id.text);
-            }
-        });
+
 
         mDelayedView = (DelayedConfirmationView)
                 findViewById(R.id.delayed_confirm);
 
-        // Programmatically hide due to visibility bug when setting value in XML. See the following
-        // issue for more details:
-        // https://code.google.com/p/android/issues/detail?id=90142
+        // Programmatically hide due to visibility bug when setting value in XML
         mDelayedView.setVisibility(View.GONE);
 
         // Set the timer to 2 seconds
@@ -58,6 +50,7 @@ public class MainActivity extends Activity implements
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.i("BUTTON","pressed");
                 animateInDelayedViewAndStartTimer();
             }
         });
