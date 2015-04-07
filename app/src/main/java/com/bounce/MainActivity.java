@@ -79,6 +79,22 @@ public class MainActivity extends Activity implements
         intent.putExtra(ConfirmationActivity.EXTRA_MESSAGE,
                 "Lets go!");
         startActivityForResult(intent, CONFIRMATION_REQUEST_CODE);
+
+
+        // get curr place and find stuff near it
+        PendingResult<PlaceLikelihoodBuffer> result = Places.PlaceDetectionApi
+                .getCurrentPlace(mGoogleApiClient, null);
+        result.setResultCallback(new ResultCallback<PlaceLikelihoodBuffer>() {
+            @Override
+            public void onResult(PlaceLikelihoodBuffer likelyPlaces) {
+                for (PlaceLikelihood placeLikelihood : likelyPlaces) {
+                    Log.i(TAG, String.format("Place '%s' has likelihood: %g",
+                            placeLikelihood.getPlace().getName(),
+                            placeLikelihood.getLikelihood()));
+                }
+                likelyPlaces.release();
+            }
+        });
     }
 
     @Override
