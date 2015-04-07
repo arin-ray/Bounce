@@ -15,9 +15,12 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.api.GoogleApiClient;
+
 public class MainActivity extends Activity implements
         DelayedConfirmationView.DelayedConfirmationListener {
     private static final int CONFIRMATION_REQUEST_CODE = 0;
+    private GoogleApiClient mGoogleApiClient;
 
     private TextView mTextView;
     private ImageButton bounce;
@@ -31,6 +34,13 @@ public class MainActivity extends Activity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.round_activity_main);
 
+        mGoogleApiClient = new GoogleApiClient
+                .Builder(this)
+                .addApi(Places.GEO_DATA_API)
+                .addApi(Places.PLACE_DETECTION_API)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .build();
 
 
         mDelayedView = (DelayedConfirmationView)

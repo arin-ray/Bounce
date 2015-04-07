@@ -3,7 +3,8 @@
     package="com.bounce" >
 
     <uses-feature android:name="android.hardware.type.watch" />
-
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
